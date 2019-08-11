@@ -55,7 +55,7 @@ const ResultList = () => {
     return (
       <main className={classes.root}>
         <Typography variant="h2" className={classes.headingText}>
-          Pending...
+          Loading Images...
         </Typography>
       </main>
     );
@@ -63,7 +63,7 @@ const ResultList = () => {
   return (
     <main className={classes.root}>
       <Typography variant="h2" className={classes.headingText}>
-        {feeds.length} results for keyword {keyword}
+        {feeds.length} results for keyword "{keyword}"
       </Typography>
       <List className={classes.listWrapper}>
         {feeds.map(feed => (
