@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useContext, useCallback, memo } from "react";
 import {
   Theme,
   Typography,
@@ -9,19 +9,13 @@ import {
 import { makeStyles, createStyles } from "@material-ui/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import PendingIcon from "@material-ui/icons/ErrorOutline";
-import { SearchContext } from "..";
+import { SearchContext } from "../../../App";
 import { debounce } from "lodash";
 // import qs from "query-string";
 // import Select from "react-select";
 
 interface IProps {}
 
-// background-image: linear-gradient(
-//   to right bottom,
-//   rgba($color-primary-light, 0.8),
-//   rgba($color-primary-dark, 0.8)
-//   ), url("../img/hero-small.jpg");
-// url(/images/homepage/header-bg.jpg)
 const useStyles = makeStyles(
   ({ mixins, palette, breakpoints, spacing }: Theme) =>
     createStyles({
@@ -47,14 +41,18 @@ const useStyles = makeStyles(
         marginBottom: 31
       },
       inputRoot: {
-        width: "70%"
+        width: "100%"
       },
-
       searchInput: {
         backgroundColor: "#fff",
         borderRadius: 5,
-        height: 50,
-        fontSize: 24
+        height: 80,
+        fontSize: 34
+      },
+      searchIcon: {
+        fontSize: 40,
+        fontWeight: 500,
+        color: "#AFB1B5"
       }
     })
 );
@@ -86,7 +84,7 @@ const Search = ({  }: IProps) => {
             className: classes.searchInput,
             endAdornment: (
               <InputAdornment position="end">
-                <SearchIcon />
+                <SearchIcon className={classes.searchIcon} />
               </InputAdornment>
             )
           }}
@@ -100,4 +98,4 @@ const Search = ({  }: IProps) => {
   );
 };
 
-export default Search;
+export default memo(Search);

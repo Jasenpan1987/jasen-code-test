@@ -37,9 +37,4 @@ const Layout = (props: IProps) => {
   );
 };
 
-// const withRootAndContext = compose(
-//   withRoot,
-//   withRootContext
-// );
-
 export default Layout;

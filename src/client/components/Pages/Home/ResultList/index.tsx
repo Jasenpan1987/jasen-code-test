@@ -1,17 +1,11 @@
-import React, { useContext } from "react";
-import {
-  createStyles,
-  Theme,
-  Typography,
-  List,
-  ListItem,
-  ListItemAvatar,
-  Avatar,
-  ListItemText
-} from "@material-ui/core";
+import React, { useContext, memo } from "react";
+import { createStyles, Theme, Typography, List } from "@material-ui/core";
 import moment from "moment";
+import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
-import { SearchContext } from "..";
+import { SearchContext } from "../../../App";
+import { useRouter } from "../../../../commons/utils/useRouter";
+import FeedItem from "./FeedItem";
 
 const useStyles = makeStyles(
   ({ mixins, palette, breakpoints, spacing }: Theme) =>
@@ -26,40 +20,14 @@ const useStyles = makeStyles(
         letterSpacing: 1.15,
         marginBottom: 25
       },
-      listWrapper: {},
-      listItemWrapper: {
-        border: "1px solid #ccc",
-        padding: "25px 20px",
-        borderRadius: 5,
-        backgroundColor: "light-grey",
-        marginBottom: 25
-      },
-      listContent: {},
-      thumbnail: {
-        width: 65,
-        height: 65,
-        marginRight: 20
-      },
-      listItemTitle: {
-        fontSize: 24,
-        fontWeight: 500,
-        maxWidth: 500,
-        letterSpacing: 1.05,
-        lineHeight: 1.2,
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap",
-        overflow: "hidden"
-      },
-      listItemDescription: {
-        fontSize: 14,
-        letterSpacing: 1.05
-      }
+      listWrapper: {}
     })
 );
 
 const ResultList = () => {
   const classes = useStyles({});
   const { pending, feeds, keyword, initial } = useContext(SearchContext);
+  const { history } = useRouter();
   console.log(pending, feeds, keyword);
 
   if (initial) {
@@ -87,41 +55,12 @@ const ResultList = () => {
         {feeds.length} results for keyword {keyword}
       </Typography>
       <List className={classes.listWrapper}>
-        {feeds.map(item => (
-          <ListItem className={classes.listItemWrapper}>
-            <Avatar
-              alt={item.title}
-              src={item.media.m}
-              className={classes.thumbnail}
-            />
-            <div className={classes.listContent}>
-              <Typography
-                variant="h4"
-                component="div"
-                className={classes.listItemTitle}
-                color="primary"
-              >
-                {item.title}
-              </Typography>
-              <Typography
-                variant="body1"
-                className={classes.listItemDescription}
-              >
-                <b>Taken By:</b> {item.author}
-              </Typography>
-              <Typography
-                variant="body1"
-                className={classes.listItemDescription}
-              >
-                <b>Date Taken:</b>{" "}
-                {moment(item.date_taken).format("hh:mm a, DD-MM-YYYY")}
-              </Typography>
-            </div>
-          </ListItem>
+        {feeds.map(feed => (
+          <FeedItem feed={feed} history={history} />
         ))}
       </List>
     </main>
   );
 };
 
-export default ResultList;
+export default memo(ResultList);
