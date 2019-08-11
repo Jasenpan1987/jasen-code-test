@@ -2,11 +2,13 @@
   "name": "tech-test-rangeme",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "npm run start-client",
+    "start": "node server.js",
+    "dev": "npm run start-client",
     "start-client": "webpack-dev-server -d --hot --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",
@@ -66,6 +68,7 @@
     "@material-ui/core": "4.2.0",
     "@material-ui/icons": "4.2.1",
     "@material-ui/styles": "4.2.0",
+    "express": "^4.17.1",
     "jsonp": "^0.2.1",
     "lodash": "4.17.14",
     "moment": "2.24.0",
