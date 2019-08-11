@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactChild, ReactChildren, ReactNode } from "react";
 import { createStyles, makeStyles } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { compose } from "recompose";
@@ -21,7 +21,11 @@ const useStyles = makeStyles(({ palette }) => {
   });
 });
 
-const Layout = props => {
+interface IProps {
+  children: ReactNode;
+}
+
+const Layout = (props: IProps) => {
   const { children } = props;
   const classes = useStyles({});
   return (
