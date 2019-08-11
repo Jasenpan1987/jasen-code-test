@@ -27,18 +27,35 @@ const useStyles = makeStyles(
         justifyContent: "center",
         alignItems: "center",
         backgroundSize: "cover",
-        backgroundPosition: "top"
+        backgroundPosition: "top",
+        [breakpoints.down("xs")]: {
+          height: "35vh"
+        }
       },
       mainContent: {
-        width: 1020,
-        zIndex: 2
+        width: "80%",
+        marginLeft: "10%",
+        marginRight: "10%",
+        zIndex: 2,
+        [breakpoints.down("sm")]: {},
+        [breakpoints.down("xs")]: {
+          width: "96%",
+          marginLeft: "2%",
+          marginRight: "2%"
+        }
       },
       heading: {
         fontSize: 64,
         color: "#fff",
         fontWeight: 700,
         alignSelf: "flex-start",
-        marginBottom: 31
+        marginBottom: 31,
+        [breakpoints.down("sm")]: {
+          fontSize: 44
+        },
+        [breakpoints.down("xs")]: {
+          fontSize: 32
+        }
       },
       inputRoot: {
         width: "100%"
@@ -47,7 +64,15 @@ const useStyles = makeStyles(
         backgroundColor: "#fff",
         borderRadius: 5,
         height: 80,
-        fontSize: 34
+        fontSize: 34,
+        [breakpoints.down("sm")]: {
+          height: 65,
+          fontSize: 24
+        },
+        [breakpoints.down("xs")]: {
+          height: 65,
+          fontSize: 24
+        }
       },
       searchIcon: {
         fontSize: 40,
@@ -88,10 +113,10 @@ const Search = ({  }: IProps) => {
               </InputAdornment>
             )
           }}
-          style={{ margin: 8 }}
           placeholder="Search your image"
           margin="normal"
           variant="outlined"
+          fullWidth
         />
       </div>
     </div>

@@ -17,7 +17,11 @@ const useStyles = makeStyles(
         borderRadius: 5,
         backgroundColor: "#dfe2e6",
         marginBottom: 25,
-        cursor: "pointer"
+        cursor: "pointer",
+        [breakpoints.down("xs")]: {
+          padding: "10px 8px",
+          marginBottom: 10
+        }
       },
       listContent: {
         marginRight: "auto"
@@ -25,7 +29,12 @@ const useStyles = makeStyles(
       thumbnail: {
         width: 65,
         height: 65,
-        marginRight: 20
+        marginRight: 20,
+        [breakpoints.down("xs")]: {
+          width: 45,
+          height: 45,
+          marginRight: 10
+        }
       },
       listItemTitle: {
         fontSize: 24,
@@ -35,11 +44,17 @@ const useStyles = makeStyles(
         lineHeight: 1.2,
         textOverflow: "ellipsis",
         whiteSpace: "nowrap",
-        overflow: "hidden"
+        overflow: "hidden",
+        [breakpoints.down("xs")]: {
+          fontSize: 17
+        }
       },
       listItemDescription: {
         fontSize: 14,
-        letterSpacing: 1.05
+        letterSpacing: 1.05,
+        [breakpoints.down("xs")]: {
+          fontSize: 12
+        }
       },
       linkIcon: {
         fontSize: 40

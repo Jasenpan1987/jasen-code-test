@@ -11,14 +11,25 @@ const useStyles = makeStyles(
   ({ mixins, palette, breakpoints, spacing }: Theme) =>
     createStyles({
       root: {
-        padding: "30px 40px"
+        padding: "30px 40px",
+        [breakpoints.down("xs")]: {
+          padding: "20px 0"
+        }
       },
       headingText: {
         fontSize: 30,
         fontWeight: 500,
         textAlign: "center",
         letterSpacing: 1.15,
-        marginBottom: 25
+        marginBottom: 25,
+        [breakpoints.down("sm")]: {
+          fontSize: 23,
+          marginBottom: 20
+        },
+        [breakpoints.down("xs")]: {
+          fontSize: 18,
+          marginBottom: 10
+        }
       },
       listWrapper: {}
     })

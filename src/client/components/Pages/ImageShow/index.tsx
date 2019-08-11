@@ -12,7 +12,8 @@ const useStyles = makeStyles(
     createStyles({
       imageWrapper: {
         maxWidth: "100%",
-        maxHeight: "calc(100vh - 50px)"
+        maxHeight: "calc(100vh - 50px)",
+        [breakpoints.down("xs")]: {}
       },
       image: {
         width: "50%",
@@ -20,7 +21,10 @@ const useStyles = makeStyles(
         margin: "40px auto",
         border: "10px solid #ccc",
         borderRadius: 10,
-        boxShadow: "7px 9px 22px 12px rgba(0,0,0,0.75)"
+        boxShadow: "7px 9px 22px 12px rgba(0,0,0,0.75)",
+        [breakpoints.down("md")]: {
+          width: "80%"
+        }
       },
       titleWrapper: {
         backgroundColor: "#ccc",
@@ -28,7 +32,10 @@ const useStyles = makeStyles(
         padding: "10px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-start"
+        justifyContent: "flex-start",
+        [breakpoints.down("md")]: {
+          height: "65px"
+        }
       },
 
       heading: {
@@ -38,7 +45,6 @@ const useStyles = makeStyles(
       },
       goback: {
         fontSize: 40,
-        width: 90,
         cursor: "pointer"
       }
     })

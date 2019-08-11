@@ -1,6 +1,8 @@
 import React, { createContext, useState, useRef, useEffect } from "react";
 import fetchData from "../commons/utils/fetchData";
+import { ThemeProvider } from "@material-ui/styles";
 import Routes from "./Routes";
+import { createMuiTheme } from "@material-ui/core";
 
 export type FlickrItem = {
   title: string;
@@ -73,17 +75,19 @@ export default () => {
   }, [keyword]);
 
   return (
-    <SearchContext.Provider
-      value={{
-        pending,
-        setKeyword,
-        error,
-        feeds,
-        keyword,
-        initial: isFirstLoad.current
-      }}
-    >
-      <Routes />
-    </SearchContext.Provider>
+    <ThemeProvider theme={createMuiTheme()}>
+      <SearchContext.Provider
+        value={{
+          pending,
+          setKeyword,
+          error,
+          feeds,
+          keyword,
+          initial: isFirstLoad.current
+        }}
+      >
+        <Routes />
+      </SearchContext.Provider>
+    </ThemeProvider>
   );
 };
