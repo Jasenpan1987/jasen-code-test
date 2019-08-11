@@ -55,7 +55,7 @@ export default () => {
       isFirstLoad.current = false;
       return;
     }
-
+    setFeeds([]);
     if (keyword.length > 2) {
       setPending(true);
       fetchData<FlickrFeed>(keyword)
@@ -75,19 +75,17 @@ export default () => {
   }, [keyword]);
 
   return (
-    <ThemeProvider theme={createMuiTheme()}>
-      <SearchContext.Provider
-        value={{
-          pending,
-          setKeyword,
-          error,
-          feeds,
-          keyword,
-          initial: isFirstLoad.current
-        }}
-      >
-        <Routes />
-      </SearchContext.Provider>
-    </ThemeProvider>
+    <SearchContext.Provider
+      value={{
+        pending,
+        setKeyword,
+        error,
+        feeds,
+        keyword,
+        initial: isFirstLoad.current
+      }}
+    >
+      <Routes />
+    </SearchContext.Provider>
   );
 };

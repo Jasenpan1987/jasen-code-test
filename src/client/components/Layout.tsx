@@ -1,7 +1,8 @@
 import React, { ReactChild, ReactChildren, ReactNode } from "react";
-import { createStyles, makeStyles } from "@material-ui/core";
+import { createStyles, makeStyles, createMuiTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { compose } from "recompose";
+import { ThemeProvider } from "@material-ui/styles";
 // import Header from "./Header";
 // import { withRoot } from "./withRootHoc";
 // import { withRootContext } from "./context";
@@ -29,11 +30,12 @@ const Layout = (props: IProps) => {
   const { children } = props;
   const classes = useStyles({});
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      {/* <Header /> */}
-      {children}
-    </div>
+    <ThemeProvider theme={createMuiTheme()}>
+      <div className={classes.root}>
+        <CssBaseline />
+        {children}
+      </div>
+    </ThemeProvider>
   );
 };
 
