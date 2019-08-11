@@ -56,6 +56,13 @@ const useStyles = makeStyles(
           fontSize: 12
         }
       },
+      listItemTags: {
+        fontSize: 12,
+        letterSpacing: 1.15,
+        marginTop: 5,
+        fontWeight: 500,
+        color: palette.primary.main
+      },
       linkIcon: {
         fontSize: 40
       }
@@ -70,7 +77,7 @@ interface IProps {
 }
 
 const FeedItem = ({
-  feed: { title, media, date_taken, author },
+  feed: { title, media, date_taken, author, tags },
   history
 }: IProps) => {
   const classes = useStyles({});
@@ -100,6 +107,10 @@ const FeedItem = ({
         </Typography>
         <Typography variant="body1" className={classes.listItemDescription}>
           <b>Date Taken:</b> {moment(date_taken).format("hh:mm a, DD-MM-YYYY")}
+        </Typography>
+        <Typography variant="body2" className={classes.listItemTags}>
+          <b>Tags: </b>
+          {tags}
         </Typography>
       </div>
       <LinkIcon className={classes.linkIcon} />
