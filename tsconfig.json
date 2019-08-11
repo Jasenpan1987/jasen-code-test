@@ -13,7 +13,8 @@
     "noImplicitAny": true,
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "paths": {}
-  }
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*.ts", "src/client/graphql/graphqlTypes.tsx"],
+  "exclude": ["node_modules", "public", "*.js", "src/**/__tests__", "dist"]
 }

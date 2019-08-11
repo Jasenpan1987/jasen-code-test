@@ -81,7 +81,8 @@ module.exports = (environment, argv) => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       enforce: "pre",
-      loader: "tslint-loader"
+      loader: "tslint-loader",
+      exclude: /node_modules/
     });
   } else {
     config.optimization = {
