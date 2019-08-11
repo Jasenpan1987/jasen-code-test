@@ -1,0 +1,29 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint-config-airbnb", "tslint-config-prettier"],
+  "rules": {
+    "quotemark": [true, "double"],
+    "ordered-imports": false,
+    "trailing-comma": true,
+    "object-shorthand": false,
+    "object-shorthand-properties-first": false,
+    "object-literal-sort-keys": false,
+    "variable-name": false,
+    "max-line-length": false,
+    "no-empty-interface": false,
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "match-default-export-name": false,
+    "arrow-parens": false,
+    "align": false,
+    "no-console": false,
+    "import-name": false,
+    "ter-arrow-parens": false,
+    "no-shadowed-variable": false,
+    "ter-prefer-arrow-callback": false,
+    "only-arrow-functions": false,
+    "function-name": false,
+    "ter-indent": false,
+    "no-boolean-literal-compare": false,
+    "prefer-array-literal": false
+  }
+}

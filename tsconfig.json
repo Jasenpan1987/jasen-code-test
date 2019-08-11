@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es2018",
+    "lib": ["esnext", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "keyofStringsOnly": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "paths": {
+      "common/*": ["./src/client/common/*"],
+      "components/*": ["./src/client/components/*"],
+      "interfaces/*": ["./src/client/interfaces/*"],
+      "layouts/*": ["./src/client/layouts/*"],
+      "models/*": ["./src/client/models/*"],
+      "routes/*": ["./src/client/routes/*"],
+      "styles/*": ["./src/client/styles/*"],
+      "utils/*": ["./src/client/utils/*"],
+      "UI/*": ["./src/client/UI/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "public", "*.js", "src/**/__tests__", "dist"]
+}
