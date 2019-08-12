@@ -3,6 +3,8 @@ import path from "path";
 import fs from "fs";
 import express from "express";
 import ReactDOMServer from "react-dom/server";
+import { ThemeProvider, ServerStyleSheets } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core";
 import { StaticRouter } from "react-router-dom";
 import App from "../client/components/App";
 
@@ -18,13 +20,18 @@ app.use(express.static("static"));
 
 app.get("/*", (req, res) => {
   const context = {};
-
+  const sheets = new ServerStyleSheets();
   const app = ReactDOMServer.renderToString(
-    <StaticRouter location={req.url} context={context}>
-      <App />
-    </StaticRouter>
+    sheets.collect(
+      <ThemeProvider theme={createMuiTheme()}>
+        <StaticRouter location={req.url} context={context}>
+          <App />
+        </StaticRouter>
+      </ThemeProvider>
+    )
   );
 
+  const css = sheets.toString();
   const indexFile = path.resolve("./static/template.html");
   fs.readFile(indexFile, "utf8", (err, data) => {
     if (err) {
@@ -33,10 +40,12 @@ app.get("/*", (req, res) => {
     }
 
     return res.send(
-      data.replace(
-        `<div id="root"></div>`,
-        `<div id="root" class="bar">${app}</div>`
-      )
+      data
+        .replace(
+          `<div id="root"></div>`,
+          `<div id="root" class="bar">${app}</div>`
+        )
+        .replace(`<style id="injectCss"></style>`, `<style>${css}</style>`)
     );
   });
 });
