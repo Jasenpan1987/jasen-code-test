@@ -16,7 +16,7 @@ module.exports = (environment, argv) => {
     prev[`process.env.${next}`] = JSON.stringify(process.env[next]);
     return prev;
   }, {});
-  const targetPath = path.join(__dirname, "dist");
+  const targetPath = path.join(__dirname, "dist", "static");
   const config = {
     stats: { modules: false, performance: false },
     resolve: {
@@ -61,7 +61,7 @@ module.exports = (environment, argv) => {
       new CopyWebpackPlugin([
         {
           from: path.resolve(__dirname, "public/images"),
-          to: path.resolve(__dirname, "dist/images/")
+          to: path.resolve(__dirname, "dist/static/images")
         }
       ]),
       new webpack.DefinePlugin(envKeys)
@@ -111,7 +111,7 @@ module.exports = (environment, argv) => {
       }),
       new HtmlWebpackPlugin({
         template: "public/index.html",
-        filename: "index.html"
+        filename: "template.html"
       })
     );
   }
