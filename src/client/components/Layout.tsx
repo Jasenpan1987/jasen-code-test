@@ -1,7 +1,6 @@
 import React, { ReactChild, ReactChildren, ReactNode } from "react";
 import { createStyles, makeStyles, createMuiTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { compose } from "recompose";
 import { ThemeProvider } from "@material-ui/styles";
 // import Header from "./Header";
 // import { withRoot } from "./withRootHoc";

@@ -90,7 +90,7 @@ const Search = ({  }: IProps) => {
 
   const throttledSetKeyword = useCallback(debounce(setKeyword, 1000), []);
 
-  const handleKeywordChange = e => {
+  const handleKeywordChange = (e: any) => {
     setLocalKeyword(e.target.value);
     throttledSetKeyword(e.target.value);
   };
@@ -98,13 +98,18 @@ const Search = ({  }: IProps) => {
   return (
     <div className={classes.contentContainer}>
       <div className={classes.mainContent}>
-        <Typography variant="h2" className={classes.heading}>
+        <Typography
+          variant="h2"
+          data-testid="findPhoto"
+          className={classes.heading}
+        >
           Find your best photos
         </Typography>
         <TextField
           value={localKeyword}
           onChange={handleKeywordChange}
           classes={{ root: classes.inputRoot }}
+          inputProps={{ "data-testid": "keywordInput" }}
           InputProps={{
             className: classes.searchInput,
             endAdornment: (

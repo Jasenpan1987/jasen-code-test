@@ -39,12 +39,15 @@ const ResultList = () => {
   const classes = useStyles({});
   const { pending, feeds, keyword, initial } = useContext(SearchContext);
   const { history } = useRouter();
-  console.log(pending, feeds, keyword);
 
   if (initial) {
     return (
       <main className={classes.root}>
-        <Typography variant="h2" className={classes.headingText}>
+        <Typography
+          variant="h2"
+          data-testid="heading"
+          className={classes.headingText}
+        >
           Type your keywords and get your results
         </Typography>
       </main>
@@ -54,7 +57,11 @@ const ResultList = () => {
   if (pending) {
     return (
       <main className={classes.root}>
-        <Typography variant="h2" className={classes.headingText}>
+        <Typography
+          variant="h2"
+          data-testid="pending"
+          className={classes.headingText}
+        >
           Loading Images...
         </Typography>
       </main>
@@ -62,12 +69,16 @@ const ResultList = () => {
   }
   return (
     <main className={classes.root}>
-      <Typography variant="h2" className={classes.headingText}>
+      <Typography
+        variant="h2"
+        data-testid="resultHeading"
+        className={classes.headingText}
+      >
         {feeds.length} results for keyword "{keyword}"
       </Typography>
       <List className={classes.listWrapper}>
         {feeds.map(feed => (
-          <FeedItem feed={feed} history={history} />
+          <FeedItem feed={feed} history={history} key={feed.link} />
         ))}
       </List>
     </main>

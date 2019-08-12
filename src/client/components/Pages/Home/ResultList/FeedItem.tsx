@@ -84,7 +84,6 @@ const FeedItem = ({
 
   return (
     <ListItem
-      key={media.m}
       className={classes.listItemWrapper}
       onClick={() => {
         history.push(
@@ -97,15 +96,24 @@ const FeedItem = ({
         <Typography
           variant="h4"
           component="div"
+          data-testid="title"
           className={classes.listItemTitle}
           color="primary"
         >
           {title}
         </Typography>
-        <Typography variant="body1" className={classes.listItemDescription}>
+        <Typography
+          data-testid="author"
+          variant="body1"
+          className={classes.listItemDescription}
+        >
           <b>Taken By:</b> {author}
         </Typography>
-        <Typography variant="body1" className={classes.listItemDescription}>
+        <Typography
+          data-testid="dateTaken"
+          variant="body1"
+          className={classes.listItemDescription}
+        >
           <b>Date Taken:</b> {moment(date_taken).format("hh:mm a, DD-MM-YYYY")}
         </Typography>
         <Typography variant="body2" className={classes.listItemTags}>
@@ -113,7 +121,7 @@ const FeedItem = ({
           {tags}
         </Typography>
       </div>
-      <LinkIcon className={classes.linkIcon} />
+      <LinkIcon data-testid="link" className={classes.linkIcon} />
     </ListItem>
   );
 };
